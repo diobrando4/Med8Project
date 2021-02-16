@@ -63,14 +63,12 @@ public class basicmovement : MonoBehaviour
 
         
         if(Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = Mathf.Clamp(speed, startSpeed, maxSpeed);
-            speed++;
-           
-
+        {           
+            speed++;          
         }else{
-            speed = startSpeed;
+            speed--;
         }
+        speed = Mathf.Clamp(speed, startSpeed, maxSpeed);
         return speed;
     }
 }
