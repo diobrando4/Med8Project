@@ -66,7 +66,7 @@ public class basicmovement : MonoBehaviour
         {
             speed = Mathf.Clamp(speed, startSpeed, maxSpeed);
             speed++;
-            print(speed);
+           
 
         }else{
             speed = startSpeed;
