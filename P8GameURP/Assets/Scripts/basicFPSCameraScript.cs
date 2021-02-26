@@ -11,6 +11,9 @@ public class basicFPSCameraScript : MonoBehaviour
 	public Transform playerBody;
 	public Rigidbody rb;
 	private float xAxisClamp = 0.0f;
+	private Vector3 myPos;
+	private Vector3 PlayerPos;
+	private Vector3 differencePos;
 
 	void Awake()
 	{
@@ -19,7 +22,10 @@ public class basicFPSCameraScript : MonoBehaviour
 	}
 	void Start()
 	{
-		rb.GetComponent<Rigidbody>().rotation = Quaternion.identity;
+		//rb.GetComponent<Rigidbody>().rotation = Quaternion.identity;
+		myPos = GetComponent<Transform>().position;
+		PlayerPos = rb.GetComponent<Transform>().position;
+		differencePos = PlayerPos - myPos;
 	}
 	void unlockMouse()
 	{
@@ -34,6 +40,7 @@ public class basicFPSCameraScript : MonoBehaviour
 	{
 		rotateCamra();
 		unlockMouse();
+		
 	}
 
 	//This method does that when the mouse turns the character body rotates with the camra

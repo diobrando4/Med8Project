@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class basicmovement : MonoBehaviour
 {
-    Rigidbody rb;
+    [SerializeField] private Rigidbody rb;
     public float speed = 5;
-    public float jumpSpeed = 2;
+    public float jumpSpeed = 0.5f;
 
     private Vector3 playerPos;
     private Vector3 downDirection;
-    private float downDisRange;
-    private float downDis = 0.2f;
+   private float downDisRange;
+    public float downDis = 0.2f;
     private float jump = 0;
     private float vertical=0;
     private float horizontal=0;
     private float startSpeed = 5;
     private float maxSpeed = 10;
+    [SerializeField] private Collider BodyCollider;
+    
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        downDisRange = GetComponent<Collider>().bounds.extents.y + downDis;
+        rb = rb.GetComponent<Rigidbody>();
+        downDisRange = BodyCollider.GetComponent<Collider>().GetComponent<Collider>().bounds.extents.y + downDis;
         downDirection = Vector3.down;
         startSpeed = speed;
         maxSpeed = startSpeed * 2;
@@ -46,6 +48,7 @@ public class basicmovement : MonoBehaviour
         rb.MovePosition(rb.position + (transform.right * horizontal) * Time.fixedDeltaTime);
 
         // jump if player is on a collider
+       
         if (jump > 0 && onSurface())
         {
             rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
