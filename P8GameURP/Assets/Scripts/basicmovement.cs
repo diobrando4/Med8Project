@@ -26,13 +26,21 @@ public class basicmovement : MonoBehaviour
         startSpeed = speed;
         maxSpeed = startSpeed * 2;
     }
-
+   
     // Update is called once per frame
     void FixedUpdate()
     {
+
+       // fixedCounter++;
         playerPos = rb.position;
         move();
+        
+
     }
+
+
+   
+
 
     void move()
     {
