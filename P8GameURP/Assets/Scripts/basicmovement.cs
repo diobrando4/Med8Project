@@ -63,8 +63,6 @@ public class basicmovement : MonoBehaviour
 
     }
     private float runSpeed(){
-
-        
         if(Input.GetKey(KeyCode.LeftShift))
         {           
             speed++;          
